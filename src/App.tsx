@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import RecipeCard from "./components/recipeCard";
 
 // Define the Recipe type based on your backend model
 interface Recipe {
@@ -21,9 +22,7 @@ function App() {
 
   const fetchRecipes = async () => {
     try {
-      const response = await fetch(
-        "https://husmansbanken-27caca75ec38.herokuapp.com/recipes"
-      );
+      const response = await fetch("http://localhost:3000/recipes");
       if (!response.ok) {
         throw new Error("Failed to fetch recipes");
       }
@@ -41,23 +40,7 @@ function App() {
       </header>
       <main className="recipe-grid">
         {recipes.map((recipe) => (
-          <div key={recipe.id} className="recipe-card">
-            <h2>{recipe.title}</h2>
-            <div className="recipe-details">
-              <p>
-                <strong>Cooking Time:</strong> {recipe.cookingTime} minutes
-              </p>
-              <p>
-                <strong>Servings:</strong> {recipe.servings}
-              </p>
-            </div>
-            <div className="recipe-content">
-              <h3>Ingredients:</h3>
-              <p>{recipe.ingredients}</p>
-              <h3>Instructions:</h3>
-              <p>{recipe.instructions}</p>
-            </div>
-          </div>
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </main>
     </div>
