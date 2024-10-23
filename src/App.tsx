@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>My Recipe Collection</h1>
+        <h1>My Recipe Collection - ahdföjkasdkjhas</h1>
       </header>
       <main className="recipe-grid">
         {recipes.map((recipe) => (
